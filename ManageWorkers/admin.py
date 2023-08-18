@@ -3,6 +3,10 @@ from import_export.admin import ImportExportModelAdmin
 from .models import Afiliado
 from import_export import resources
 
+admin.site.site_header = "SNFPMEANZ"
+admin.site.index_title = "Sistema de gestión de afiliados al Sindicato Nacional de Funcionarios Públicos del Ministerio de Educación"
+admin.site.site_url = "https://www.snfpmeanz.com/"
+
 class AfiliadoResource(resources.ModelResource):
     class Meta:
         model = Afiliado
