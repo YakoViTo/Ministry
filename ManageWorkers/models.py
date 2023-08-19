@@ -42,6 +42,16 @@ class Afiliado(models.Model):# Creación de la tabla con el nombre Afiliado
         validators=[MinValueValidator(0.01)],  # Validador para valores mínimos
         verbose_name="Cuota"
     )
+    
+    def clean(self):
+        # Eliminar espacios en blanco alrededor de los campos de texto
+        self.id = self.id.strip()
+        self.nombre = self.nombre.strip()
+        self.cod_cargo = self.cod_cargo.strip()
+        self.profession = self.profession.strip()
+        self.municipio = self.municipio.strip()
+        self.cod_plantel = self.cod_plantel.strip()
+        self.empresa = self.empresa.strip()
 
     def __str__(self):
         return str(self.id)

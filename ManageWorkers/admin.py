@@ -8,6 +8,16 @@ admin.site.index_title = "Sistema de gestión de afiliados al Sindicato Nacional
 admin.site.site_url = "https://www.snfpmeanz.com/"
 
 class AfiliadoResource(resources.ModelResource):
+    
+    def before_import_row(self, row, **kwargs):
+        # Aplicar limpieza a los datos en la fila antes de importarla
+        row['nombre'] = row['nombre'].strip()
+        row['cod_cargo'] = str(row['cod_cargo']).strip()
+        row['profession'] = row['profession'].strip()
+        row['municipio'] = row['municipio'].strip()
+        row['cod_plantel'] = str(row['cod_plantel']).strip()
+        row['empresa'] = row['empresa'].strip()
+        
     class Meta:
         model = Afiliado
         
