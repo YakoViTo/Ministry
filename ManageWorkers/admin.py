@@ -12,8 +12,8 @@ class AfiliadoResource(resources.ModelResource):
         model = Afiliado
         
 class AfiliadoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display=("id", "nombre", "cod_cargo", "profession", "municipio", "cod_plantel", "empresa")
-    search_fields=("id", "nombre", "cod_cargo", "profession", "municipio", "cod_plantel", "empresa")
+    list_display=("id", "nombre", "cod_cargo", "profession", "municipio", "cod_plantel", "empresa", "cuota")
+    search_fields=("id", "nombre", "cod_cargo", "profession", "municipio", "cod_plantel", "empresa", "cuota")
     list_filter=("profession", "municipio", "empresa")
     resource_class = AfiliadoResource
 
