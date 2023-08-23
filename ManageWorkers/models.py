@@ -42,6 +42,7 @@ class Afiliado(models.Model):# Creación de la tabla con el nombre Afiliado
         validators=[MinValueValidator(0.01)],  # Validador para valores mínimos
         verbose_name="Cuota"
     )
+    fecha=models.DateTimeField(auto_now_add=True)
     
     def clean(self):
         # Eliminar espacios en blanco alrededor de los campos de texto

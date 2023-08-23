@@ -1,3 +1,3 @@
 Administrador
 	User: jra60
-	password: 12admin12
+	password: admin1960
