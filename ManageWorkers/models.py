@@ -60,3 +60,4 @@ class Afiliado(models.Model):# Creación de la tabla con el nombre Afiliado
     class Meta:
         verbose_name='afiliado'
         verbose_name_plural='afiliados'
+        

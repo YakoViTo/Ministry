@@ -8,7 +8,6 @@ admin.site.index_title = "Sistema de gestión de afiliados al Sindicato Nacional
 admin.site.site_url = "https://www.snfpmeanz.com/"
 
 class AfiliadoResource(resources.ModelResource):
-    
     def before_import_row(self, row, **kwargs):
         # Aplicar limpieza a los datos en la fila antes de importarla
         row['nombre'] = row['nombre'].strip()
@@ -17,15 +16,17 @@ class AfiliadoResource(resources.ModelResource):
         row['municipio'] = row['municipio'].strip()
         row['cod_plantel'] = str(row['cod_plantel']).strip()
         row['empresa'] = row['empresa'].strip()
-        
+
     class Meta:
         model = Afiliado
-        
+
 class AfiliadoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display=("id", "nombre", "cod_cargo", "profession", "municipio", "cod_plantel", "empresa", "cuota", "formatted_fecha")
-    search_fields=("id", "nombre", "cod_cargo", "profession", "municipio", "cod_plantel", "empresa", "cuota")
-    list_filter=("profession", "municipio", "empresa")
+    list_display = ("id", "nombre", "cod_cargo", "profession", "municipio", "cod_plantel", "empresa", "cuota", "formatted_fecha")
+    search_fields = ("id", "nombre", "cod_cargo", "profession", "municipio", "cod_plantel", "empresa", "cuota", "formatted_fecha")
+    list_filter = ("profession", "municipio", "empresa")
+    date_hierarchy = "fecha"
     resource_class = AfiliadoResource
+    list_per_page = 50
     
     def formatted_fecha(self, obj):
         return obj.fecha.strftime('%d-%m-%Y %H:%M')
