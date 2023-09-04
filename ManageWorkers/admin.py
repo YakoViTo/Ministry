@@ -11,7 +11,7 @@ from django_admin_listfilter_dropdown.filters import (
 admin.site.site_header = format_html('<img src="/static/img/logo-m3.jpg" alt="Ícono"> SNFPMEANZ')
 admin.site.site_title = "SNFPMEANZ"
 admin.site.index_title = "Sistema de gestión de afiliados al Sindicato Nacional de Funcionarios Públicos del Ministerio de Educación"
-admin.site.site_url = "https://www.snfpmeanz.com/"
+#admin.site.site_url = "https://www.snfpmeanz.com/"
 
 # Definición de un recurso para importar y exportar datos
 class AfiliadoResource(resources.ModelResource):
@@ -33,9 +33,9 @@ class AfiliadoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ("id", "nombre", "cod_cargo", "profession", "municipio", "cod_plantel", "plantel", "cuota", "formatted_fecha")
     search_fields = ("id", "nombre", "cod_cargo", "profession", "municipio", "cod_plantel", "plantel", "cuota")
     list_filter = (
-        ('profession', DropdownFilter),
-        ('municipio', DropdownFilter),
-        ('plantel', DropdownFilter),
+        ('profession', ChoiceDropdownFilter),
+        ('municipio', ChoiceDropdownFilter),
+        ('plantel', ChoiceDropdownFilter),
     )
     date_hierarchy = "fecha"
     resource_class = AfiliadoResource
