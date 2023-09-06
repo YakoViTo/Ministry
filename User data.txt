@@ -1,3 +1,0 @@
-Administrador
-	User: jra60
-	password: admin1960
