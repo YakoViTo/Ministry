@@ -86,11 +86,12 @@ WSGI_APPLICATION = 'Ministry.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://postgres:admin1960@localhost/postgres',
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
+    #'default': dj_database_url.config(
+    #    default='postgresql://postgres:admin1960@localhost/postgres',
+    #    conn_max_age=600,
+    #    conn_health_checks=True,
+    #)
+    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 
