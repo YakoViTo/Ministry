@@ -41,7 +41,7 @@ class AfiliadoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_per_page = 25
     
     def formatted_fecha(self, obj):
-        return obj.fecha.strftime('%d-%m-%Y %H:%M')
+        return obj.fecha.strftime('%d-%m-%Y')
     formatted_fecha.short_description = 'Fecha de Ingreso'
     
     def has_import_permission(self, request):
