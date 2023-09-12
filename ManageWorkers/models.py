@@ -7,6 +7,11 @@ from django.contrib.contenttypes.models import ContentType
 class Afiliado(models.Model):# Creación de la tabla con el nombre Afiliado
     # Campos de la tabla
     
+    SEXO_CHOICES = [
+        ('F', 'F'),
+        ('M', 'M'),
+    ]
+    
     MUNICIPIO_CHOICES = [
         ('ANACO', 'ANACO'),
         ('ARAGUA', 'ARAGUA'),
@@ -433,7 +438,12 @@ class Afiliado(models.Model):# Creación de la tabla con el nombre Afiliado
     }
     
     id = models.CharField(primary_key=True, max_length=20, verbose_name="Cédula de Identidad")
-    nombre=models.CharField(max_length=50, verbose_name="Apellidos y Nombres")
+    primer_apellido=models.CharField(max_length=20, verbose_name="Primer Apellido")
+    segundo_apellido=models.CharField(max_length=20, verbose_name="Segundo Apellido", null=True)
+    primer_nombre=models.CharField(max_length=20, verbose_name="Primer Nombre")
+    segundo_nombre=models.CharField(max_length=20, verbose_name="Segundo Nombre", null=True)
+    sexo=models.CharField(max_length=2, verbose_name= "Sexo", choices=SEXO_CHOICES)
+    fecha_de_nacimiento=models.DateField()
     cod_cargo=models.CharField(max_length=50,verbose_name="Cod_Cargo", blank=True, editable=False)
     profession=models.CharField(max_length=50, verbose_name="Profesión u Oficio", choices=PROFESSION_CHOICES)
     municipio=models.CharField(max_length=20, verbose_name="Municipio", choices=MUNICIPIO_CHOICES)
@@ -445,7 +455,6 @@ class Afiliado(models.Model):# Creación de la tabla con el nombre Afiliado
         validators=[MinValueValidator(0.01)],  # Validador para valores mínimos
         verbose_name="Cuota"
     )
-    fecha=models.DateTimeField(auto_now_add=True)
     
     def save(self, *args, **kwargs):
         self.cod_cargo = self.CARGO_CHOICES.get(self.profession, '')
@@ -455,12 +464,17 @@ class Afiliado(models.Model):# Creación de la tabla con el nombre Afiliado
     def clean(self):
         # Eliminar espacios en blanco alrededor de los campos de texto
         self.id = self.id.strip()
-        self.nombre = self.nombre.strip()
+        self.primer_apellido = self.primer_apellido.strip()
+        self.segundo_apellido = self.segundo_apellido.strip()
+        self.primer_nombre = self.primer_nombre.strip()
+        self.segundo_nombre = self.segundo_nombre.strip()
+        self.sexo = self.sexo.strip()
         self.cod_cargo = self.cod_cargo.strip()
         self.profession = self.profession.strip()
         self.municipio = self.municipio.strip()
         self.cod_plantel = self.cod_plantel.strip()
         self.plantel = self.plantel.strip()
+        self.cuota = self.cuota.strip()
 
     def __str__(self):
         return str(self.id)
@@ -472,7 +486,4 @@ class Afiliado(models.Model):# Creación de la tabla con el nombre Afiliado
         permissions = [
             ("can_import_afiliado", "Can Import Afiliado Data"),
             ("can_export_afiliado", "Can Export Afiliado Data"),
-        ]
-        
-
-        
+        ]      
