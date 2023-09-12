@@ -437,18 +437,18 @@ class Afiliado(models.Model):# Creación de la tabla con el nombre Afiliado
         'UE. DR. JOSE MARIA VARGAS' : '7950642',
     }
     
-    id = models.CharField(primary_key=True, max_length=20, verbose_name="Cédula de Identidad")
-    primer_apellido=models.CharField(max_length=20, verbose_name="Primer Apellido")
-    segundo_apellido=models.CharField(max_length=20, verbose_name="Segundo Apellido", null=True)
-    primer_nombre=models.CharField(max_length=20, verbose_name="Primer Nombre")
-    segundo_nombre=models.CharField(max_length=20, verbose_name="Segundo Nombre", null=True)
-    sexo=models.CharField(max_length=2, verbose_name= "Sexo", choices=SEXO_CHOICES)
+    id = models.CharField(primary_key=True, max_length=50, verbose_name="Cédula de Identidad")
+    primer_apellido=models.CharField(max_length=50, verbose_name="Primer Apellido")
+    segundo_apellido=models.CharField(max_length=50, verbose_name="Segundo Apellido", null=True)
+    primer_nombre=models.CharField(max_length=50, verbose_name="Primer Nombre")
+    segundo_nombre=models.CharField(max_length=50, verbose_name="Segundo Nombre", null=True)
+    sexo=models.CharField(max_length=50, verbose_name= "Sexo", choices=SEXO_CHOICES)
     fecha_de_nacimiento=models.DateField()
-    cod_cargo=models.CharField(max_length=50,verbose_name="Cod_Cargo", blank=True, editable=False)
-    profession=models.CharField(max_length=50, verbose_name="Profesión u Oficio", choices=PROFESSION_CHOICES)
-    municipio=models.CharField(max_length=20, verbose_name="Municipio", choices=MUNICIPIO_CHOICES)
-    cod_plantel=models.CharField(max_length=50,verbose_name="Cod_Plantel", blank=True, editable=False)
-    plantel=models.CharField(max_length=50, verbose_name="Plantel", choices=PLANTEL_CHOICES)
+    cod_cargo=models.CharField(verbose_name="Cod_Cargo", blank=True, editable=False)
+    profession=models.CharField(verbose_name="Profesión u Oficio", choices=PROFESSION_CHOICES)
+    municipio=models.CharField(verbose_name="Municipio", choices=MUNICIPIO_CHOICES)
+    cod_plantel=models.CharField(verbose_name="Cod_Plantel", blank=True, editable=False)
+    plantel=models.CharField(verbose_name="Plantel", choices=PLANTEL_CHOICES)
     cuota = models.DecimalField(
         max_digits=8,  # Número máximo de dígitos en total (incluyendo los decimales)
         decimal_places=2,  # Número de decimales permitidos
@@ -474,7 +474,6 @@ class Afiliado(models.Model):# Creación de la tabla con el nombre Afiliado
         self.municipio = self.municipio.strip()
         self.cod_plantel = self.cod_plantel.strip()
         self.plantel = self.plantel.strip()
-        self.cuota = self.cuota.strip()
 
     def __str__(self):
         return str(self.id)
