@@ -1,7 +1,5 @@
 from django.db import models
 from django.core.validators import MinValueValidator
-from django.contrib.auth.models import Permission
-from django.contrib.contenttypes.models import ContentType
 
 # Create your models here.
 class Afiliado(models.Model):# Creación de la tabla con el nombre Afiliado
