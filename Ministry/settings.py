@@ -91,7 +91,7 @@ DATABASES = {
     #    conn_max_age=600,
     #    conn_health_checks=True,
     #)
-    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    "default": dj_database_url.parse("postgres://snfpmeanz_kuom_user:fx410UMIye7rAIoQSTLRiZdiWHWbTb1E@dpg-ck0su59fp0sc73b1vf0g-a.oregon-postgres.render.com/snfpmeanz_kuom")
 }
 
 

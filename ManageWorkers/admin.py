@@ -49,7 +49,7 @@ class AfiliadoResource(resources.ModelResource):
 class AfiliadoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     
     list_display = ("id", "primer_apellido", "segundo_apellido", "primer_nombre", "segundo_nombre", "sexo", "formatted_fecha", "cod_cargo", "profession", "municipio", "cod_plantel", "plantel", "cuota")
-    search_fields = ("id", "primer_apellido", "segundo_apellido", "primer_nombre", "segundo_nombre", "sexo", "formatted_fecha", "cod_cargo", "profession", "municipio", "cod_plantel", "plantel", "cuota")
+    search_fields = ("id", "primer_apellido", "segundo_apellido", "primer_nombre", "segundo_nombre", "sexo", "cod_cargo", "profession", "municipio", "cod_plantel", "plantel", "cuota")
     list_filter = (
         ('profession', ChoiceDropdownFilter),
         ('municipio', ChoiceDropdownFilter),
